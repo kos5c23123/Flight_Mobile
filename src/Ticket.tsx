@@ -4,14 +4,8 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Button,
 } from "react-native";
-import React, { useState, useEffect } from "react";
-
-import { Avatar, Divider } from "@rneui/themed";
-
-import Svg, { Path, Circle } from "react-native-svg";
-
+import React from "react";
 export default function Ticket() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
