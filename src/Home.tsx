@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Image } from "react-native";
 import React from "react";
 import { Avatar, Divider } from "@rneui/themed";
 
@@ -174,6 +174,12 @@ export default function Home() {
             >
               {e.Name}
             </Text>
+            {/* <Image
+              style={{ width: 200, height: 200 }}
+              source={{
+                uri: e.Image,
+              }}
+            /> */}
             <View
               style={{
                 flexDirection: "row",
@@ -196,7 +202,7 @@ export default function Home() {
               <Text style={{ fontSize: 18 }}>19:00</Text>
             </View>
             <View>
-              <Divider width={2} style={{marginVertical: 5}} />
+              <Divider width={2} style={{ marginVertical: 5 }} />
             </View>
             <View
               style={{
