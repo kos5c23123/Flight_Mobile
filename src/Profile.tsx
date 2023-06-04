@@ -1,4 +1,11 @@
-import { View, Text, SafeAreaView, ScrollView, Image } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 
 import { Avatar, Divider } from "@rneui/themed";
@@ -21,7 +28,7 @@ export default function Profile() {
       <Divider width={2} style={{ margin: 5 }} />
       <View style={{ padding: 10 }}>
         <Text style={{ fontWeight: "bold", fontSize: 20, color: "#fff" }}>
-          Accummlated miles
+          Accummlated Miles
         </Text>
         <View
           style={{
@@ -48,7 +55,9 @@ export default function Profile() {
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <Text style={{ color: "#888" }}>Miles accrued</Text>
-              <Text style={{ color: "#888" }}>{new Date().toLocaleDateString()}</Text>
+              <Text style={{ color: "#888" }}>
+                {new Date().toLocaleDateString()}
+              </Text>
             </View>
           </View>
           <Divider width={1} style={{ margin: 5 }} />
@@ -61,7 +70,9 @@ export default function Profile() {
               }}
             >
               <Text style={{ fontWeight: "bold", color: "#fff" }}>23 022</Text>
-              <Text style={{ fontWeight: "bold", color: "#fff" }}>Air Canada</Text>
+              <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                Air Canada
+              </Text>
             </View>
             <View
               style={{
@@ -84,7 +95,9 @@ export default function Profile() {
               }}
             >
               <Text style={{ fontWeight: "bold", color: "#fff" }}>23 022</Text>
-              <Text style={{ fontWeight: "bold", color: "#fff" }}>Air Canada</Text>
+              <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                Air Canada
+              </Text>
             </View>
             <View
               style={{
@@ -107,7 +120,9 @@ export default function Profile() {
               }}
             >
               <Text style={{ fontWeight: "bold", color: "#fff" }}>23 022</Text>
-              <Text style={{ fontWeight: "bold", color: "#fff" }}>Air Canada</Text>
+              <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                Air Canada
+              </Text>
             </View>
             <View
               style={{
@@ -121,10 +136,12 @@ export default function Profile() {
             </View>
           </View>
         </View>
-        <View style={{alignItems: "center", padding: 10}}>
-          <Text style={{color: "skyblue", fontWeight: "bold"}}>
-            How to earn miles?
-          </Text>
+        <View style={{ alignItems: "center", padding: 10 }}>
+          <TouchableOpacity>
+            <Text style={{ color: "skyblue", fontWeight: "bold" }}>
+              How to earn miles?
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
