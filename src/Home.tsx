@@ -1,9 +1,4 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, Image, TouchableWithoutFeedback } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Avatar, Divider } from "@rneui/themed";
 
@@ -11,7 +6,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 import Picker from "@ouroboros/react-native-picker";
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 const AirlineList = [
   {
@@ -92,7 +87,7 @@ const AirlineList = [
     TimeNeed: "16",
     Class: "Economy",
   },
-]
+];
 
 export default function Home() {
   const [currentLocation, setCurrentLocation] = useState<string>("YYZ");
@@ -112,7 +107,7 @@ export default function Home() {
       (e) => e.From === currentLocation && e.To === currentDirection
     );
     setCurrentList(temp);
-  }
+  };
   return (
     <View style={{ flex: 1, backgroundColor: "#000" }}>
       <View
@@ -124,15 +119,13 @@ export default function Home() {
           paddingHorizontal: 5,
         }}
       >
-        <Text style={{ color: "#fff", fontSize: 26 }}>Hello, there!</Text>
-        <Avatar
-          size={64}
-          rounded
-          title="HI"
-          titleStyle={{ color: "#000" }}
-          containerStyle={{ backgroundColor: "#FFFF00" }}
-          onPress={() => navigation.navigate('Profile')}
-        />
+        <Text style={{ color: "#fff", fontSize: 26 }}>Hello, Danny!</Text>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("Profile")}>
+          <Image
+            style={{ width: 100, height: 100, borderRadius: 15 }}
+            source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
+          />
+        </TouchableWithoutFeedback>
       </View>
       <View style={{ borderRadius: 10, padding: 10 }}>
         <View
@@ -205,17 +198,17 @@ export default function Home() {
           <Text style={{ color: "#fff", fontSize: 16 }}>14 Jun, Fri</Text>
         </View>
         <TouchableOpacity onPress={handleComfirm}>
-        <View
-          style={{
-            borderRadius: 20,
-            backgroundColor: "#fff",
-            alignItems: "center",
-            padding: 20,
-            marginVertical: 15,
-          }}
-        >
-          <Text style={{ fontSize: 16, fontWeight: "bold" }}>Confirm</Text>
-        </View>
+          <View
+            style={{
+              borderRadius: 20,
+              backgroundColor: "#fff",
+              alignItems: "center",
+              padding: 20,
+              marginVertical: 15,
+            }}
+          >
+            <Text style={{ fontSize: 16, fontWeight: "bold" }}>Confirm</Text>
+          </View>
         </TouchableOpacity>
       </View>
       <ScrollView>
@@ -252,7 +245,9 @@ export default function Home() {
               }}
             >
               <Text style={{ fontSize: 18 }}>{e.STime}</Text>
-              <Text style={{ fontSize: 12, color: "#888" }}>{e.TimeNeed} Hours</Text>
+              <Text style={{ fontSize: 12, color: "#888" }}>
+                {e.TimeNeed} Hours
+              </Text>
               <Text style={{ fontSize: 18 }}>{e.ETime}</Text>
             </View>
             <View>
@@ -285,7 +280,9 @@ export default function Home() {
                 alignItems: "center",
               }}
             >
-              <Text style={{ fontSize: 18, fontWeight: "bold" }}>${e.Price}</Text>
+              <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                ${e.Price}
+              </Text>
               <Avatar
                 size={38}
                 rounded

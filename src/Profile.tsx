@@ -5,12 +5,25 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  TextInput,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 
 import { Avatar, Divider } from "@rneui/themed";
 
 export default function Profile() {
+  const [currentMails, setCurrentMails] = useState<string>("0");
+  const [currentAccummlatedMiles, setCurrentAccummlatedMiles] =
+    useState<number>(90023);
+  const [asiaMils, setAsiaMils] = useState<number>(100);
+
+  const handleExchange = () => {
+    const newValueOfcurrentAccummlatedMiles =
+      currentAccummlatedMiles - Number(currentMails);
+    setCurrentAccummlatedMiles(newValueOfcurrentAccummlatedMiles);
+    setAsiaMils(asiaMils + Number(currentMails));
+    setCurrentMails("0");
+  };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
       <View style={{ flexDirection: "row", alignItems: "center", padding: 10 }}>
@@ -26,124 +39,197 @@ export default function Profile() {
         </View>
       </View>
       <Divider width={2} style={{ margin: 5 }} />
-      <View style={{ padding: 10 }}>
-        <Text style={{ fontWeight: "bold", fontSize: 20, color: "#fff" }}>
-          Accummlated Miles
-        </Text>
-        <View
-          style={{
-            borderWidth: 1,
-            borderColor: "#888",
-            borderRadius: 10,
-            marginVertical: 10,
-            paddingBottom: 10,
-          }}
-        >
-          <View style={{ paddingHorizontal: 30, paddingVertical: 20 }}>
-            <Text
+      <ScrollView>
+        <View style={{ padding: 10 }}>
+          <Text style={{ fontWeight: "bold", fontSize: 20, color: "#fff" }}>
+            Exchange
+          </Text>
+          <View
+            style={{
+              borderWidth: 1,
+              borderColor: "#888",
+              borderRadius: 10,
+              marginVertical: 10,
+              paddingBottom: 10,
+            }}
+          >
+            <View
               style={{
-                fontSize: 40,
-                letterSpacing: 5,
-                alignSelf: "center",
-                paddingBottom: 10,
-                color: "#ffff00",
+                flexDirection: "row",
+                padding: 20,
+                justifyContent: "space-between",
               }}
             >
-              90823
-            </Text>
+              <Text style={{ color: "#fff" }}>Mails</Text>
+              <Text style={{ color: "#fff" }}>Asia Mails</Text>
+            </View>
             <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                paddingHorizontal: 10,
+                paddingBottom: 20,
+                alignItems: "center",
+              }}
             >
-              <Text style={{ color: "#888" }}>Miles accrued</Text>
-              <Text style={{ color: "#888" }}>
-                {new Date().toLocaleDateString()}
-              </Text>
+              <TextInput
+                style={{
+                  color: "#fff",
+                  fontSize: 28,
+                  fontWeight: "bold",
+                  width: "40%",
+                }}
+                value={currentMails}
+                onChangeText={(text) => setCurrentMails(text)}
+                placeholder="0"
+              />
+              <Text style={{ color: "#fff" }}>{"->"}</Text>
+              <View style={{ width: "45%", alignItems: "flex-end" }}>
+                <Text style={{ color: "#fff", fontSize: 28 }}>{asiaMils}</Text>
+              </View>
             </View>
           </View>
-          <Divider width={1} style={{ margin: 5 }} />
-          <View style={{ paddingVertical: 10 }}>
+          <TouchableOpacity onPress={handleExchange}>
             <View
               style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingHorizontal: 10,
+                borderRadius: 20,
+                backgroundColor: "#fff",
+                alignItems: "center",
+                padding: 10,
               }}
             >
-              <Text style={{ fontWeight: "bold", color: "#fff" }}>23 022</Text>
-              <Text style={{ fontWeight: "bold", color: "#fff" }}>
-                Air Canada
-              </Text>
+              <Text style={{ fontSize: 16, fontWeight: "bold" }}>Confirm</Text>
             </View>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingHorizontal: 10,
-              }}
-            >
-              <Text style={{ color: "#888" }}>Miles</Text>
-              <Text style={{ color: "#888" }}>Received from</Text>
-            </View>
-          </View>
-          <Divider width={1} style={{ margin: 5 }} />
-          <View style={{ paddingVertical: 10 }}>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingHorizontal: 10,
-              }}
-            >
-              <Text style={{ fontWeight: "bold", color: "#fff" }}>23 022</Text>
-              <Text style={{ fontWeight: "bold", color: "#fff" }}>
-                Air Canada
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingHorizontal: 10,
-              }}
-            >
-              <Text style={{ color: "#888" }}>Miles</Text>
-              <Text style={{ color: "#888" }}>Received from</Text>
-            </View>
-          </View>
-          <Divider width={1} style={{ margin: 5 }} />
-          <View style={{ paddingVertical: 10 }}>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingHorizontal: 10,
-              }}
-            >
-              <Text style={{ fontWeight: "bold", color: "#fff" }}>23 022</Text>
-              <Text style={{ fontWeight: "bold", color: "#fff" }}>
-                Air Canada
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingHorizontal: 10,
-              }}
-            >
-              <Text style={{ color: "#888" }}>Miles</Text>
-              <Text style={{ color: "#888" }}>Received from</Text>
-            </View>
-          </View>
-        </View>
-        <View style={{ alignItems: "center", padding: 10 }}>
-          <TouchableOpacity>
-            <Text style={{ color: "skyblue", fontWeight: "bold" }}>
-              How to earn miles?
-            </Text>
           </TouchableOpacity>
         </View>
-      </View>
+        <View style={{ padding: 10 }}>
+          <Text style={{ fontWeight: "bold", fontSize: 20, color: "#fff" }}>
+            Accummlated Miles
+          </Text>
+          <View
+            style={{
+              borderWidth: 1,
+              borderColor: "#888",
+              borderRadius: 10,
+              marginVertical: 10,
+              paddingBottom: 10,
+            }}
+          >
+            <View style={{ paddingHorizontal: 30, paddingVertical: 20 }}>
+              <Text
+                style={{
+                  fontSize: 40,
+                  letterSpacing: 5,
+                  alignSelf: "center",
+                  paddingBottom: 10,
+                  color: "#ffff00",
+                }}
+              >
+                {currentAccummlatedMiles}
+              </Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text style={{ color: "#888" }}>Miles accrued</Text>
+                <Text style={{ color: "#888" }}>
+                  {new Date().toLocaleDateString()}
+                </Text>
+              </View>
+            </View>
+            <Divider width={1} style={{ margin: 5 }} />
+            <View style={{ paddingVertical: 10 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  paddingHorizontal: 10,
+                }}
+              >
+                <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                  23 022
+                </Text>
+                <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                  Air Canada
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  paddingHorizontal: 10,
+                }}
+              >
+                <Text style={{ color: "#888" }}>Miles</Text>
+                <Text style={{ color: "#888" }}>Received from</Text>
+              </View>
+            </View>
+            <Divider width={1} style={{ margin: 5 }} />
+            <View style={{ paddingVertical: 10 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  paddingHorizontal: 10,
+                }}
+              >
+                <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                  23 022
+                </Text>
+                <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                  Air Canada
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  paddingHorizontal: 10,
+                }}
+              >
+                <Text style={{ color: "#888" }}>Miles</Text>
+                <Text style={{ color: "#888" }}>Received from</Text>
+              </View>
+            </View>
+            <Divider width={1} style={{ margin: 5 }} />
+            <View style={{ paddingVertical: 10 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  paddingHorizontal: 10,
+                }}
+              >
+                <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                  23 022
+                </Text>
+                <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                  Air Canada
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  paddingHorizontal: 10,
+                }}
+              >
+                <Text style={{ color: "#888" }}>Miles</Text>
+                <Text style={{ color: "#888" }}>Received from</Text>
+              </View>
+            </View>
+          </View>
+          <View style={{ alignItems: "center", padding: 10 }}>
+            <TouchableOpacity>
+              <Text style={{ color: "skyblue", fontWeight: "bold" }}>
+                How to earn miles?
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
